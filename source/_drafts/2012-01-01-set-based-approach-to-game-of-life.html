@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Set-based approach to Game of Life"
+date: 2012-01-01T17:25:00-08:00
+comments: false
+---
+
+<div class='post'>
+CGrand : http://clj-me.cgrand.net/2011/08/19/conways-game-of-life/<br /><br /><pre class="brush: clj; gutter: false;">(ns gameoflife<br />  (:use [clojure.set]))<br /><br />(defn- surrounding-spots [{:keys [x y]}]<br />  (for [i (range (dec x) (+ 2 x))<br />        j (range (dec y) (+ 2 y))<br />       :when (not= [i j] [x y])]<br />     {:x i :y j} ))<br /><br />(defn unpopulated-neighboring-spots [people]<br />  (difference (set (mapcat surrounding-spots people)) people))<br /><br />(defn neighbors [person all-people]<br />  (intersection all-people (set (surrounding-spots person)))))<br /><br />(defn survivors [people]<br />  (select (fn [p] (#{2 3} (count (neighbors p people)))) people))<br /><br />(defn newborns [people]<br />  (->> people <br />       unpopulated-neighboring-spots <br />       (select #(= 3 (count (neighbors % people))))))<br /><br />(defn next-world [people]<br />  (union (survivors people) (newborns people)))</pre><br />asdfafasdfasdf</div>

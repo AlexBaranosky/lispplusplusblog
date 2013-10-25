@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Keep Your Stinkin Unit Tests Short! Real Short."
+date: 2011-12-09T19:13:00-08:00
+comments: false
+---
+
+<div class='post'>
+Three to Six Lines Short<br /><br />I shed a small tear. I get frustrated when I see unit tests that are 12 lines long. The crux of the issue is that short unit tests are roughly 3 times as maintainable.  For anyone wondering where I got that stat, well you see, I just made it up.  It's less than a statistic, and more of a how-Alex-feels-about-itistic.  <br /><br />The original:  <br /><br />@Test<br />public void canMakeAwesomeOnSaturdays() {<br /><br />}<br /><br />After make over:<br /><br />@Test<br />public void canMakeAwesomeOnSaturdays() {<br /><br />}<br /><br />The first one while it may cover the unit appropriately, fails in two ways.<br /><br />* the future reader (that dude maintaining all those reams of code you write) can't tell which factors are relevant details to the case, and which parts are incidental, and so the reader can't tell what parts need to be changed to update the test without embarking on a metaphorical expedition mission<br />* the maze of code can more easily hide defects: when noone can tell what the code does or why it does it, bugs will find there way in.<br /><br /><br />The second one does two awesome things.<br /><br />* It talks about only the factors that directly relate to the unit we're concerned with, keeping all irrelevant details far away.<br /><br />* It is broken clearly into arrange/act/assert (or given/when/then) sections further illuminating to the reader the intent behind the code.<br /><br />We say it over and over, that code needs to be readable but when push comes to shove, most of us in general aren't putting the work into building our tests for readability.  Please guys, I don't want to have to decode these 12 line tests down the line.  Let's make the world a better place.</div>

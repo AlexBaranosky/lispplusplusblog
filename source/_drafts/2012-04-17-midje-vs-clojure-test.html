@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Midje vs. Clojure.test"
+date: 2012-04-17T18:07:00-07:00
+comments: false
+---
+
+<div class='post'>
+The number one question I get from people about Midje is "Why should I use Midje over clojure.test?"<br /><br />(deftest math<br />  (is (= 4 (+ 1 2))))<br /><br />; FAIL in (math) (t_core.clj:7)<br />; expected: (= 4 (+ 1 2))<br />; actual: (not (= 4 3))<br /><br /><br />(fact "math"<br />  (+ 1 2) => 4)<br /><br />; FAIL "math" at (t_core.clj:15)<br />; Expected: 4<br />; Actual: 3<br /><br /><br />(deftest pred<br />  (is (string? (+ 1 2))))<br /><br />; FAIL in (pred) (t_core.clj:23)<br />; expected: (string? (+ 1 2))<br />; actual: (not (string? 3))<br /><br />(fact "pred"<br />  (+ 1 2) => string?)<br /><br />; FAIL "pred" at (t_core.clj:27)<br />; Actual result did not agree with the checking function.<br />; Actual result: 3<br />; Checking function: string?<br /><br /><br /><br />(defn boom []<br />  (throw (Exception. "boom!!!")))<br /><br />(deftest thrown<br />  (is (thrown-with-msg? Exception #"boom" (boom))))<br /><br />(fact "thrown" <br />  (boom) => (throws #"boom"))<br /><br /><br />;; Setup teardown<br /><br />(def count (atom 0))<br /><br />(fact <br />  (against-background (before :checks (reset! count 0)))<br />  <br />  (reset! count 123)<br />  @count => 0<br />  <br />  (reset! count 123)<br />  @count => 0<br />  <br />  (reset! count 123)<br />  @count => 0)</div>
