@@ -16,7 +16,7 @@ I thought it'd be fun to walk you through how I developed a macro to handle this
 
 _NOTE: The code has been simplified from the production code to better emphasize the important points._
 
-### First Stab At a Stateful Test Macro
+## First Stab At a Stateful Test Macro
 
 Our first stab at this problem solves the basic initial version of the problem. Often this would be all you need to get the job done. This approach enables us to evaluate our test assertion from within a stateful scope, and we use the finally block of the try-catch to ensure that the rules are always set back to their original state when the test is done.
 
@@ -97,7 +97,7 @@ time with code that looks like this.
 
 What I really want here is one macro not 5! I'd like something I can easily extend as new forms of state come up.
 
-### Composing Functions For A More Extensible Approach
+## Composing Functions For A More Extensible Approach
 
 What if we could write test-motherload like this:
 
@@ -209,7 +209,7 @@ Also, we can be improve it one step further. We'll use clojure.core/partial to c
      ~@setup-and-teardowns))))
 ```
 
-### Refactoring Addendum
+## Refactoring Addendum
 
 I thought a little more about this and realized that even this macro is doing
 too much.  We can actually extract the code that wraps a 0-arity function f in
@@ -236,18 +236,20 @@ line of code that does the heavy lifting and a few more lines of asserts.
 
 This is a useful step because now we have another higher order function with which to build useful state-management tooling, and we've eliminated more of the potentially confusing macro code. 
 
-### Takeaways
+## Takeaways
 
-So why go to all this trouble?
+### So why go to all this trouble?
 
 *   We've written a macro that is extensible.
 *   We've minimized actual lines of macro code. Yay!
 *   We get validation of the state-map keys for free, anytime we extend this with a new setup-and-teardown function.
 *   Our tests have a clean, uniform, minimal DSL for expressing pre-requisite mutable state.
-How did we do it?
+
+### How did we do it?
 
 *   We took an essentially functional compositional approach.
 *   We wrapped it in a layer of syntactic sugar.
+
 Hope you enjoyed this little code walk through.
 
 Comments or questions?
