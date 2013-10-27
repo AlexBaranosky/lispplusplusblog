@@ -12,7 +12,7 @@ One way to make your Clojure code easier to test and to reason about is to quara
 
 What this can lead to is code patterned where instead of executing IO straight away, you instead compute IO IOUs: a pure function determines that some piece of IO should occur, and returns that fact encoded in some form of data.
 
-# A Basic Example
+## A Basic Example
 
 Say we have a map that tracks the inventory changes at a warehouse.  It typically looks like this:
 
@@ -35,7 +35,7 @@ Say we have a map that tracks the inventory changes at a warehouse.  It typicall
 
 Then at a later stage of processing this code, at an outer layer that deals with IO, we can look over the actions on the inventory map and processes them accordingly.
 
-# Ramifications of This Style
+## Ramifications of This Style
 
 A cool side effect of this is that if you want to change how your IO gets evaluated it will all be in a handful of well-defined places.  This makes switching out implementation details easier.  Also, it makes converting to asynchronous IO more straightforward if the IO becomes a blocker to the performance of the system. 
 
