@@ -197,7 +197,7 @@ Also, we can be improve it one step further. We'll use clojure.core/partial to c
 ``` clojure
 (def ^:private runtime-test-option-set (set (keys option->setup-and-teardown-fn)))
 
-(defmacro with-runtime-state [options &amp; body]
+(defmacro with-runtime-state [options & body]
  (assert (map? options)
      "Options should be a map.")
  (assert (every? runtime-test-option-set (keys options))
