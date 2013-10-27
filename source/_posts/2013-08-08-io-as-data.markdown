@@ -26,7 +26,8 @@ Say we have a map that tracks the inventory changes at a warehouse.  It typicall
             }}
    :actions {:order-from-factory []}}) ;; this is where the IO data goes
 
-(defn remove-item-from-inventory [inventory {:keys [product-id] :as item}]
+(defn remove-item-from-inventory 
+  [inventory {:keys [product-id] :as item}]
   (if (some-> inventory :items product-id :quantity count (> 0))
     (update-in inventory [:items product-id :quantity] dec)
     (update-in inventory [:actions :order-from-factory] conj product-id)))

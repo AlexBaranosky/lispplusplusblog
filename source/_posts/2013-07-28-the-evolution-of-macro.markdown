@@ -134,7 +134,9 @@ With a minor change to with-rules* and with-models* we can enable them to be use
 We can take the testcase evaluation function and transform it into a function that when called will wrap the evaluate-test-case function in setup and teardown of the rules state.
 
 ``` clojure
-(rules-setup-and-teardown '(def-rule priority-level 5) (fn [] (evalute-test-case)))
+(rules-setup-and-teardown 
+  '(def-rule priority-level 5) 
+  (fn [] (evalute-test-case)))
 ```
 
 And we can chain these function compositions together, to incorporate more varieties of setup and teardown as necessary. Note we don't need no fancy macros for this (yet).
@@ -142,7 +144,8 @@ And we can chain these function compositions together, to incorporate more varie
 ``` clojure
 (deftest test-model-and-level
  (let [testcase-fn (fn []
-                     (is (= true (found-promotion? (legal-customer-session)))))
+                     (is (= true (found-promotion? 
+                                   (legal-customer-session)))))
        wrapped-testcase-fn 
          (->> testcase-fn
               (rules-setup-and-teardown '(def-rule priority-level 5))
@@ -177,12 +180,12 @@ expands into something very similar to the composed function solution above.
 ``` clojure 
 (defmacro with-runtime-state [options & body]
  (let [setup-and-teardowns
-    ;; 1. map each key of the state-map to its corresponding setup-and-teardown fn
+    ;; 1. map each key of the state-map to its a setup-and-teardown fn
     (for [[k state-value] options]
      `((fn [f#]
        (let [setup-and-teardown# (get ~option->setup-and-teardown-fn ~k)]
         (setup-and-teardown# ~state-value f#)))))]
-  ;; 2. thread the testcase body function through each wrapper fn, and evaluate it
+  ;; 2. thread the testcase body fn through each wrapper fn, and eval it
   `((-> (fn [] ~@body)
      ~@setup-and-teardowns))))
 ```
