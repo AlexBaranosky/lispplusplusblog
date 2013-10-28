@@ -29,7 +29,7 @@ There are 5 possible outcomes:
 
 Now the fun part.  Let's assign rough guesstimates of likelihood for each outcome.
 
-Let's be generous and say that you only go over one hour 20% of the time, and only 20% of the times you go over do you get a ticket.
+Let's be generous and say that you only go over one hour 20% of the time, and only 20% of the times you go over do you get a ticket. 
 
 Let's also say that you pay $0.50 half the time and $0.75 half the time.
 
