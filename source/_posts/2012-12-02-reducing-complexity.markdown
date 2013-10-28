@@ -14,30 +14,23 @@ Since the code is so confusing it is virtually impossible to read at a glance an
 ### An example: 
 
 ``` clojure
-(cumulative-percentage-past-SLA-map 
-  {:past-SLA-1 2 :past-SLA-2 1 :past-SLA-3 3} 
-  4 
-  10)   
+(cumulative-percentage-past-SLA-map {:past-SLA-1 2 :past-SLA-2 1 :past-SLA-3 3} 4 10)   
 ;; => {:past-SLA-1 0.60 :past-SLA-2 0.70 :past-SLA-3 100.0}
 ```
 
 What makes this code end up so complicated is that it is complecting three things: generating the series of sums, dividing them, and creating a new map to return.
 
 ``` clojure
-(def all-past-SLA-x-keys [:past-SLA-1 :past-SLA-2 :past-SLA-3])
+(def ^:private all-past-SLA-x-keys [:past-SLA-1 :past-SLA-2 :past-SLA-3])
 
 (defn- cumulative-percentage-past-SLA-map
-  "Takes a count-based report and generates percents that accumulate."
+  "Takes a count-based report and generates percentages that accumulate."
   [count-based-past-SLA-map met-SLA total-shipments]
   (-> (reduce (fn [[past-SLA-map total-past-SLA-so-far] days-past-key]
-                (let [updated-past-SLA-map 
-                       (update-in past-SLA-map
-                                  [days-past-key]
-                                  #(/ (+ total-past-SLA-so-far %) 
-                                      total-shipments))
-                      updated-total-past-SLA 
-                        (+ total-past-SLA-so-far 
-                           (get past-SLA-map days-past-key))]
+                (let [updated-past-SLA-map (update-in past-SLA-map
+                                                      [days-past-key]
+                                                      #(/ (+ total-past-SLA-so-far %) total-shipments))
+                      updated-total-past-SLA (+ total-past-SLA-so-far (get past-SLA-map days-past-key))]
                   [updated-past-SLA-map updated-total-past-SLA]))
               [count-based-past-SLA-map met-SLA]
               all-past-SLA-x-keys)
@@ -54,13 +47,13 @@ Thirdly, we create a new map with percents as the values instead of counts.
 
 ``` clojure
 (defn- cumulative-percentage-past-SLA-map
-  "Takes a count-based report and generates percents that accumulate."
+  "Takes a count-based report and generates percentages that accumulate."
   [count-based-past-SLA-map num-met-SLA total-shipments]
-  (let [counts (map #(get count-based-past-SLA-map %) 
-                    all-past-SLA-x-keys)
+  (let [counts (map #(get count-based-past-SLA-map %) all-past-SLA-x-keys)
         running-totals (rest (reductions + num-met-SLA counts))
         percents (map #(/ % total-shipments) running-totals)]
-    (zipmap all-past-SLA-x-keys percents)))
+    (zipmap all-past-SLA-x-keys
+            percents)))
 ```
 
 Another thing you might notice in this code is that I purposely used the more verbose `#(get count-based-past-SLA-map %)` when I could have just used `count-based-past-SLA-map`, as it is already a function!  I prefer to err on the side of making my code as obvious as possible, so I try to avoid using data structures as functions except under a few special cases. But I guess that would be a different topic for a different blog.
