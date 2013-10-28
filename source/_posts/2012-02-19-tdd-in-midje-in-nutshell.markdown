@@ -18,14 +18,11 @@ Midje starts with a simple premise: that tests should be elegant and readable.
 
 When was the last time you saw code samples like this in somebody's blog, gist, or book?
 
-### EXAMPLE:
-
+EXAMPLE:
 _As you can see the foo function always returns: a-ham-sandwich_
 
-``` clojure
 (foo :bar :baz)
 ;; => :a-ham-sandwich
-```
 
 As developers, I think we write examples like this, because it reads well to us. We're used to this sort of pseudo-code example style, and so we can all tell at a glance what's happening.
 
@@ -87,7 +84,7 @@ Now that we've revealed a new concept of a multiplier in our code, it looks like
 You just learned:
 
 *   how to use Midje facts as a form of executable examples
-*   how to do TDD. Nice.
+*   how to do TDDNice.
 
 I was sneaky just then. Without letting you know what I was doing, I've walked you through the 4 steps of TDD. Decide what you are testing, write a failing test, make that test pass, refactor the code to have a good design.
 
@@ -96,7 +93,7 @@ I was sneaky just then. Without letting you know what I was doing, I've walked y
 1.  We chose a new piece of functionality we wanted the code to have.
 2.  We wrote a failing test.  We ran it.  We saw it fail. In Midje, we like to think of this step as taking some time to describe the facts of the future version of the code.
 3.  We wrote as little code as possible to make the test pass. In Midje, we think of this step as bringing the code up to date with the new facts.
-4.  We took some time to reorganize the code - giving it better structure, removing duplication, adjusting the naming, etc. Repeat.
+4.  We took some time to reorganize the code - giving it better structure, removing duplication, adjusting the naming, etc.Repeat.
 
 That's TDD in Midje in a nutshell.
 
