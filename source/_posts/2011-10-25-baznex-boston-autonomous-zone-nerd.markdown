@@ -2,7 +2,7 @@
 layout: post
 title: "B.A.Z.N.E.X. - Boston Autonomous Zone Nerd Nexus"
 date: 2011-10-25T16:08:00-07:00
-comments: false
+comments: true
 categories:
  - baznex
 ---

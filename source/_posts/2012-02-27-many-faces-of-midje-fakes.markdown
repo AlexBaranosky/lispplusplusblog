@@ -2,7 +2,7 @@
 layout: post
 title: "The Many Faces of Midje Fakes"
 date: 2012-02-27T19:21:00-08:00
-comments: false
+comments: true
 categories:
  - midje
  - clojure
@@ -168,12 +168,3 @@ There are other ways to make fakes in Midje as well, by using the background mac
 *  [Metaconstants](https://github.com/marick/Midje/wiki/Metaconstants)
 *  [Using Checkers in Fakes](https://github.com/marick/Midje/wiki/Checkers-within-prerequisites)
 *  [Folded Prerequisites](https://github.com/marick/Midje/wiki/Folded-prerequisites)
-
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Hema Powar</div>
-<div class='content'>
-Hey, saw your write ups. It is quite interesting. Please share your profile at hema.powar@wipro.com if you are looking for job. We have projects for a reputed client in Cupertino CA. Think you might have guessed the client already :-) <br /><br />Reach out to me at 201-272-6303</div>
-</div>
-</div>

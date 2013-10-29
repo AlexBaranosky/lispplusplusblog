@@ -2,7 +2,7 @@
 layout: post
 title: "A Few Nice Features Of Clojure, Part #1: Using Macros To Freeze Time"
 date: 2011-10-23T18:25:00-07:00
-comments: false
+comments: true
 categories:
  - clojure
 ---

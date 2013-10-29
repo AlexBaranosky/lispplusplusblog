@@ -2,7 +2,7 @@
 layout: post
 title: "Reducing Complexity"
 date: 2012-12-02T02:33:00-08:00
-comments: false
+comments: true
 categories:
  - clojure
 ---
@@ -64,27 +64,3 @@ Thirdly, we create a new map with percents as the values instead of counts.
 ```
 
 Another thing you might notice in this code is that I purposely used the more verbose `#(get count-based-past-SLA-map %)` when I could have just used `count-based-past-SLA-map`, as it is already a function!  I prefer to err on the side of making my code as obvious as possible, so I try to avoid using data structures as functions except under a few special cases. But I guess that would be a different topic for a different blog.
-
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Alex Baranosky</div>
-<div class='content'>
-I would probably do it that way if I wrote it today, too, without the `get`.  But I don&#39;t think it is a huge deal either way.</div>
-</div>
-<div class='comment'>
-<div class='author'>Timothy Baldridge</div>
-<div class='content'>
-+1 I&#39;d rather treat functions as maps, than introduce syntactic sugar with #() and %.</div>
-</div>
-<div class='comment'>
-<div class='author'>Alex Baranosky</div>
-<div class='content'>
-IMO this is an area where Clojure idioms venture into &quot;fancy&quot; territory.  It is a little Perlish.  At the end of the day it is a stylistic concern  and that kind of stuff is something that depends on what your team is most comfortable with. YMMV.</div>
-</div>
-<div class='comment'>
-<div class='author'>Unknown</div>
-<div class='content'>
-I don&#39;t agree with the last part... In clojure you just don&#39;t use get, it is more idiomatic the other way. Using get just make it more confusing IMHO</div>
-</div>
-</div>

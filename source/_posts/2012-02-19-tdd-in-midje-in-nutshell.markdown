@@ -2,7 +2,7 @@
 layout: post
 title: "TDD in Midje in a Nutshell"
 date: 2012-02-19T17:41:00-08:00
-comments: false
+comments: true
 categories:
  - midje
  - clojure
@@ -121,17 +121,3 @@ What did you think? Interested in hearing some more intermediate or advanced TDD
 (fact   
   (foo :bar :baz) => :a-ham-sandwich)
 ```
-
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>id</div>
-<div class='content'>
-Look closely at this screenshot (note: with noscript allowing all scripts except for the notorious google tracking bs) : http://bit.ly/IyQf46<br /><br />&quot;As developers, I think we write examples like this (...)&quot;<br /><br />As developers, *we* know that to mark up *code* you don&#39;t use a *script* tag.<br />a) as a noscript user, your reader won&#39;t know which of the dozen bs js sources to (temporarily) allow<br />b) even if you allow js, it won&#39;t work. &quot;Can&#39;t find brush for: clj&quot;<br />c) you can&#39;t just read it. No JS: no content? Fail!<br /><br />For a bit of potential syntax highlighting, you break your article. I applaud you, dear developer.</div>
-</div>
-<div class='comment'>
-<div class='author'>nodename.com</div>
-<div class='content'>
-Yes, keep it going!</div>
-</div>
-</div>

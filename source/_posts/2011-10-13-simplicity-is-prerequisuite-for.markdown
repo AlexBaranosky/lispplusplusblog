@@ -2,7 +2,7 @@
 layout: post
 title: "Simplicity is a Prerequisuite for Reliability"
 date: 2011-10-13T09:04:00-07:00
-comments: false
+comments: true
 ---
 
 _(This blog post is based on [Rich Hickey's](http://www.codequarterly.com/2011/rich-hickey/) keynote speech at Strange Loop 2011)_

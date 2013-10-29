@@ -2,7 +2,7 @@
 layout: post
 title: "Slamhound 1.3.0 - Cleaning up all your namespaces"
 date: 2012-12-26T17:22:00-08:00
-comments: false
+comments: true
 ---
 
 Cleaning up namespaces in Clojure is a chore.  So noone does it, and the namespaces get worse.

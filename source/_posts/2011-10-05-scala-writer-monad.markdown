@@ -2,7 +2,7 @@
 layout: post
 title: "A Scala Writer Monad"
 date: 2011-10-05T20:00:00-07:00
-comments: false
+comments: true
 categories:
  - monad
  - scala
@@ -140,17 +140,3 @@ needs.
 
 *  [Learn You a Haskell for Great Good](http://learnyouahaskell.com/for-a-few-monads-more#writer)
 *  [Scalaz Writer](http://scalaz.github.com/scalaz/scalaz-2.9.0-1-6.0/doc.sxr/scalaz/Writer.scala.html)
-
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Dombou</div>
-<div class='content'>
-None of this code works. There&#39;s also quite a few syntax errors.</div>
-</div>
-<div class='comment'>
-<div class='author'>ExternalReality</div>
-<div class='content'>
-I learn something new everyday!</div>
-</div>
-</div>
