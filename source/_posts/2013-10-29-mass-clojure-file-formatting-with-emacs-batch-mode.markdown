@@ -14,14 +14,14 @@ I do not profess to be a master of Emacs Lisp.  But after some time googling I f
 
 It is pretty likely that you may need to tweak this to get it to work on your machine. Specifically, you'll have to point the script to the correct location of you clojure-mode installation.
 
-This script calls `emacs` in [Emacs in --batch mode](http://www.emacswiki.org/emacs/BatchMode), which causes Emacs to run non-interacively.  We can use `--batch` to allow us to write scripts using Emacs.  Awesome, I know. :)
+This script calls `emacs` in [Emacs in --batch mode](http://www.emacswiki.org/emacs/BatchMode), which causes Emacs to run non-interacively.  We can use `--batch` to allow us to write scripts using Emacs.  Awesome, I know. :-)
 
 ``` bash
-#!/bin/sh
+#!/bin/bash
 
-for file in `find /path/to/your/project/.`
+find "/path/to/your/project/." | while read file
 do
-    if [[ $file =~ ^.*\.clj$ ]]; then
+    if [[ "$file" =~ ^.*\.clj$ ]]; then
         emacs "$file" \
               --batch \
               --eval="(progn 
