@@ -33,3 +33,28 @@ do
     fi
 done
 ```
+
+## ShellCheck
+
+I recently discovered [ShellCheck](http://www.shellcheck.net/about.html), a static analysis and linting tool for sh/bash scripts.  When I ran it on the original version of my above script it found a number of issues. I really recommend you use it on your own scripts.
+
+#### Original Script
+
+``` bash
+#!/bin/sh # bad, because I was using features on ly available in bash
+
+## can cause unexpected behavior
+for file in `find /path/to/your/project/.` ## `'s deprecated
+do
+    if [[ $file =~ ^.*\.clj$ ]]; then ## [[ ]] only works in bash
+        emacs $file \                 ## ... surround $file with "'s
+              --batch \
+              --eval="(progn 
+                        (load \"~/.emacs.d/elpa/clojure-mode-2.0.0/clojure-mode\")
+                        (require 'clojure-mode) 
+                        (clojure-mode) 
+                        (indent-region (point-min) (point-max)) 
+                        (save-buffer))"
+    fi
+done
+```
